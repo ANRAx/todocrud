@@ -35,8 +35,8 @@ const addTodo = () => {
       'Content-Type': 'application/json',
     },
     body: {
-      title: title,
-      description: description,
+      title: `${title}`,
+      description: `${description}`,
     },
   });
 };
