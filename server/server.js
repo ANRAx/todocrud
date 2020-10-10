@@ -21,8 +21,12 @@ app.get('/todos', todoController.getTodos, (req, res) => {
   res.json(res.locals.todos);
 });
 
-app.get('/populate', todoController.addTodoDB, (req, res) => {
-  res.json(res.locals.todos);
+app.post('/todos', todoController.addTodo, (req, res) => {
+  res.send('added successfully');
+});
+
+app.get('/populate', todoController.populatedb, (req, res) => {
+  res.send('db updated');
 });
 
 // /:id is a query parameter

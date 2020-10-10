@@ -8,7 +8,12 @@ todoController.getTodos = async (req, res, next) => {
   return next();
 };
 
-todoController.addTodo = (req, res, next) => {};
+todoController.addTodo = async (req, res, next) => {
+  const { title, description } = req.body;
+  const query = `INSERT INTO todos values ($1, $2, $3)`;
+  await db.query(query, [, title, description, 1]);
+  return next();
+};
 
 // req.params is referencing the query string on line 24 server.js
 todoController.deleteTodo = async (req, res, next) => {
@@ -20,7 +25,7 @@ todoController.deleteTodo = async (req, res, next) => {
   return next();
 };
 
-todoController.addTodoDB = async (req, res, next) => {
+todoController.populatedb = async (req, res, next) => {
   const query = `INSERT INTO todos 
   VALUES
   (8, 'TEST3', 'TEST3', 1),

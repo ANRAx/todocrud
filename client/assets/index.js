@@ -2,8 +2,8 @@
 fetch('/todos')
   .then((response) => response.json())
   .then((data) => {
-    data.forEach((todo) => {
-      appendTodo(todo);
+    data.forEach((el) => {
+      appendTodo(el);
     });
   });
 
@@ -24,11 +24,12 @@ const deleteTodo = (id) => {
 };
 
 const addTodo = () => {
+  console.log('add to do!');
   const list = document.getElementById('todo-list');
-  const title = document.getElementById('name').value;
+  const title = document.getElementById('title').value;
   const description = document.getElementById('description').value;
-  list.innerHTML += `<li id=todo${todo.id}>${todo.title} - ${todo.description}</li>`;
-  fetch(`/todo`, {
+  list.innerHTML += `<li id=todo>${title} - ${description} <button> X </button></li>`;
+  fetch(`/todos`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
